@@ -33,5 +33,23 @@ function getCaseInsensitiveOccurance (searchString, searchTerm) {
  let occurance = convertedString.indexOf(convertedSubString);
  return occurance 
 }
-console.log(getCaseInsensitiveOccurance(searchString, searchTerm));
+// console.log(getCaseInsensitiveOccurance(searchString, searchTerm));
 
+ // +++++++ lastIndexOf ++++++++++
+// Write a function that takes a string and a character as arguments and returns the index of the last occurrence of that character in the string. If the character is not found, return -1.
+
+
+// STEPS
+// 1 - write a function which will take two arguments
+// 2 - return the last occurance if present otherwise return -1  i.e lastIndexOf 
+function getLastOccurance( searchString , searchTerm ) {
+  let convertedString = searchString.toUpperCase() , convertedSubString = searchTerm.toUpperCase();
+  return convertedString.lastIndexOf(convertedSubString);
+}
+
+// console.log(getLastOccurance(searchString,searchTerm));
+
+
+function getLastAtIndex () {
+
+}
