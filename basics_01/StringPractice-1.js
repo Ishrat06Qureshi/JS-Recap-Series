@@ -8,9 +8,9 @@
 // Index of the First Occurance i.e indexof
 // condition -- return -1 if not present
 let searchString = 'This dog is not looking like a dog';
-let searchTerm = 'dog'
+let searchTerm = 'DOG'
 let notExistTerm = 'beauty'
-let stringIndex = 9;
+let stringIndex = 3
 function getFirstOccurance(searchString,searchTerm , index=0) {
  let firstIndexOccurance = searchString.indexOf(searchTerm , index);
  return firstIndexOccurance
@@ -20,4 +20,18 @@ function getFirstOccurance(searchString,searchTerm , index=0) {
 // console.log(getFirstOccurance(searchString,notExistTerm));
 // console.log(getFirstOccurance(searchString,searchTerm , stringIndex ));
 
+
+// Write a function that takes a string and a character as arguments and returns the index of the first occurrence of the character, ignoring case. (You can convert both the string and the character to lower or upper case for the comparison.)
+
+// ++++ STEPS +++++
+// 1 - write down a function which takes two parameters i.e searchString and searchTerm
+// 2 - converting both the string into same case
+// 3 - return the first occurance and -1 if not present
+
+function getCaseInsensitiveOccurance (searchString, searchTerm) {
+ let convertedString = searchString.toUpperCase() , convertedSubString = searchTerm.toUpperCase();
+ let occurance = convertedString.indexOf(convertedSubString);
+ return occurance 
+}
+console.log(getCaseInsensitiveOccurance(searchString, searchTerm));
 
