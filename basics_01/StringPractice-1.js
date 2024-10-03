@@ -49,7 +49,18 @@ function getLastOccurance( searchString , searchTerm ) {
 
 // console.log(getLastOccurance(searchString,searchTerm));
 
+// Write a function that takes a string and a character and an index. The function should return the index of the last occurrence of the character before the given index. If not found, return -1.
 
-function getLastAtIndex () {
+// +++++++++ FINDIND OCCURANCE FROM SPECIFIED INDEX +++++++
 
+// STEPS
+// 1 - writting a function which will take three parameters i.e searchingString , searchTerm and index
+// 2 - 
+function getLastAtIndex ( searchString , searchTerm , index) {
+let 
 }
+
+//Write a function that takes a string and a substring as arguments and returns how many times the substring appears in the string, but only count the last occurrences. Use lastIndexOf for this.
+
+//Write a function that takes a string and a character and an index. The function should return the index of the last occurrence of the character before the given index. If not found, return -1.
+//Write a function that takes a string and a substring as arguments and returns how many times the substring appears in the string using indexOf.
