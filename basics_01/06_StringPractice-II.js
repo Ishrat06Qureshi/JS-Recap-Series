@@ -177,4 +177,33 @@ function getLastIndex(str,subStr) {
 }
 
 // console.log(getLastIndex('Pulp Fiction','a'));
-console.log(getLastIndex('Interstellar','o'));
+// console.log(getLastIndex('Interstellar','o'));
+
+
+//++++++++++++++ concat Method +++++++++++++++
+// concat Method:
+// Concatenate the movie title The Shawshank Redemption with the year it was released.
+// Concatenate the movie title The Matrix with the director's name.
+
+//STEPS
+// 1 - function with two parameter (str , subStr)
+// 2 - extract the tragtted movie from dataset
+// 3-  concatenate the given keys of targetted movie
+
+function concatenateString(movieName , 
+  keyName,
+  concatMsg
+) {
+ if(typeof movieName !== 'string' || typeof keyName !== 'string'){
+  throw new Error(`The type of ${movieName} and ${keyName} are not string`)
+ }
+ let selectedMovie = dataSet.find((element) => element.title.toUpperCase() === movieName.toUpperCase()); 
+ if(selectedMovie !== undefined){
+  return `The movie ${movieName} ${concatMsg} ${selectedMovie[keyName]}`
+ }
+ return 0
+
+}
+
+// console.log(concatenateString('The Shawshank Redemption','year','was released on the year'));
+// console.log(concatenateString('The Matrixww','director','was directed by'));
