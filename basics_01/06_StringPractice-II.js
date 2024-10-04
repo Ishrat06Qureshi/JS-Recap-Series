@@ -114,5 +114,46 @@ function questionfour(dataSet , movieName , keyName ) {
  return getSpecificCharacter(selectedMovie[keyName],lastCharPosition);
 }
 // console.log(getSpecificCharacter('Pulp Fiction',9));
-console.log(questionfour(dataSet,'The Godfather','director'));
+// console.log(questionfour(dataSet,'The Godfather','director'));
+
+
+//includes Method:
+// Does the title The Dark Knight include the word "Knight"?
+// Does the title Forrest Gump include the letter "r"?
+
+//STEPS
+// 1- function with two parameters (actualString , subString)
+//2- boolean mai value dyni ha so we will be using includes
+
+function isStringPresent(actualString , searchString) {
+  // to acheive case insensitivity
+  // actualString.toUpperCase();
+  // searchString.toUpperCase();
+ return actualString.toUpperCase().includes(searchString.toUpperCase());
+}
+
+// console.log(isStringPresent('The Dark Knight','Knight'));
+
+// console.log(isStringPresent('Forrest Gump','r'));
+
+//+++++++++++ IndexOf +++++++++++++
+
+//. indexOf Method:
+// What is the index of the letter "i" in the title Fight Club?
+// What is the index of the word "Lord" in the title The Lord of the Rings: The Fellowship of the Ring?
+
+
+//STEPS
+// function with two parametr (mainString , subString)
+// indexof will be used to get the index of substring if prsent
+
+function getIndex(mainString , subString) {
+  if (typeof mainString !== 'string' || typeof subString !== 'string') {
+    throw new Error('Both arguments must be strings.');
+  }
+  let index = mainString.toUpperCase().indexOf(subString.toUpperCase());
+  return index;
+}
+// console.log(getIndex('Fight Club','i'));
+// console.log(getIndex('The Lord of the Rings: The Fellowship of the Ring','LORD' ));
 
