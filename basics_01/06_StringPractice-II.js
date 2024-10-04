@@ -207,3 +207,14 @@ function concatenateString(movieName ,
 
 // console.log(concatenateString('The Shawshank Redemption','year','was released on the year'));
 // console.log(concatenateString('The Matrixww','director','was directed by'));
+
+
+//+++++++++++++++++ Slice Method +++++++++++++++++++
+//slice Method:
+// Slice the first 5 characters from the title The Dark Knight.
+// Slice the last 4 characters from the title Inception.
+
+//STEPS
+// 1 - function with two parameter ie str and sliceIndex
+// 2 - slice will be used on for slicing the string
+
