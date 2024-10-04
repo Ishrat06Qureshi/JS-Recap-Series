@@ -157,3 +157,24 @@ function getIndex(mainString , subString) {
 // console.log(getIndex('Fight Club','i'));
 // console.log(getIndex('The Lord of the Rings: The Fellowship of the Ring','LORD' ));
 
+
+//++++++++++++++ LastIndexOf ++++++++++++++++++++++++++++\
+
+//lastIndexOf Method:
+// What is the last index of the letter "a" in the title Pulp Fiction?
+// What is the last index of the letter "o" in Interstellar?
+
+
+//STEPS
+// function with two parameters ( str , subStr)
+// as last index will be used therefore lastIndexOf method will be use
+
+function getLastIndex(str,subStr) {
+ if(typeof str !== 'string' || typeof subStr !== 'string'){
+  throw new Error('Please provide a valid string')
+ }
+ return str.toUpperCase().lastIndexOf(subStr.toUpperCase());
+}
+
+// console.log(getLastIndex('Pulp Fiction','a'));
+console.log(getLastIndex('Interstellar','o'));
