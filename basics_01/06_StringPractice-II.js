@@ -201,7 +201,7 @@ function concatenateString(movieName ,
  if(selectedMovie !== undefined){
   return `The movie ${movieName} ${concatMsg} ${selectedMovie[keyName]}`
  }
- return 0
+ return `${movieName} is not found in the given dataSet`
 
 }
 
