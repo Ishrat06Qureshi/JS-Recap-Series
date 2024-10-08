@@ -215,6 +215,24 @@ function concatenateString(movieName ,
 // Slice the last 4 characters from the title Inception.
 
 //STEPS
-// 1 - function with two parameter ie str and sliceIndex
+// 1 - function with three parameter ie str and initialIndex, finalIndex
 // 2 - slice will be used on for slicing the string
 
+
+function getSlicedStr(str , initialIndex, finalIndex) {
+if(typeof str !== 'string' || typeof initialIndex !== 'number' || typeof finalIndex !== 'number') {
+  throw new Error('The type of paramters is mismatched')
+}
+// dont call the method if there is no value
+if(str.length === 0) {
+  return ''
+}
+if(initialIndex < 0 || finalIndex > str.length || initialIndex >=finalIndex){
+ return ''
+}
+ return str.slice(initialIndex,finalIndex);
+
+}
+let strValue = 'Inception'
+// console.log(getSlicedStr('The Dark Knight',6,6));
+// console.log(getSlicedStr(strValue,strValue.length - 4 , strValue.length  ));
