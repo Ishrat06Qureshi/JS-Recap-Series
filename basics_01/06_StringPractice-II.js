@@ -236,3 +236,11 @@ if(initialIndex < 0 || finalIndex > str.length || initialIndex >=finalIndex){
 let strValue = 'Inception'
 // console.log(getSlicedStr('The Dark Knight',6,6));
 // console.log(getSlicedStr(strValue,strValue.length - 4 , strValue.length  ));
+
+//+++++++ split +++++++++++++++
+//Split the title The Lord of the Rings: The Fellowship of the Ring by spaces.
+//Split the director's name of Pulp Fiction by spaces.
+
+// STEPS
+// 1 - function with two paramters i.e originalStr and delimiter
+// 2 - as we need to split the string we will be using String it will return array of string
