@@ -239,8 +239,69 @@ let strValue = 'Inception'
 
 //+++++++ split +++++++++++++++
 //Split the title The Lord of the Rings: The Fellowship of the Ring by spaces.
-//Split the director's name of Pulp Fiction by spaces.
 
 // STEPS
 // 1 - function with two paramters i.e originalStr and delimiter
 // 2 - as we need to split the string we will be using String it will return array of string
+
+function getSplittedString( str , delimiter) {
+  if(typeof str !== 'string'){
+    throw new Error('The string is not a valid one')
+  }
+  if(delimiter === undefined || typeof delimiter !== 'string') {
+    throw new Error('Please provide a valid delimiter')
+  }
+  return str.split(delimiter)
+}
+// console.log(getSplittedString('The Lord of the Rings: The Fellowship of the Ring'));
+
+//Split the director's name of Pulp Fiction by spaces.
+
+// STEPS
+// 1 -  write a function to validate the type of paramters
+// 2- write a function to validate the key name in an object
+// 3 - write a function for finding an object 
+// 4 - then splitted function will be use
+
+function checkType(variable , varType) {
+  // to avoid arrays and object we can define a pre-define list of types.
+  let validType = ['string', 'boolean','number']
+ if(variable !== undefined && variable !== null){
+  return validType.includes(typeof variable);
+ }
+ return null
+}
+function validateKey (keyName , entity) {
+  // !=. consider null and undefined as same
+  if(keyName != null && entity != null) {
+   return entity.hasOwnProperty(keyName)
+  }
+  return false
+}
+
+function findAnObject(keyName , filterValue , dataSet) {
+ if(keyName != null && filterValue != null && dataSet != null){
+  let obj = dataSet.find((element) => element[keyName] === filterValue);  
+  if(obj != undefined){
+    return obj;
+  }
+ }
+  return false;
+}
+// console.log(findAnObject('rating',8.8,dataSet));
+
+function question_18(filterKeyName , keyName , filterValue , delimiter , dataSet) {
+  if(!checkType(keyName,typeof keyName) || !checkType(filterValue , typeof filterValue) ||  !checkType(delimiter , typeof delimiter)) {
+    throw new Error('Paramter Types are not valid')
+  }
+if(!validateKey(keyName , dataSet[0] ) && !validateKey(filterKeyName , dataSet[0])){
+  throw new Error('Paramter Types are not valid')
+}
+let obj = findAnObject(filterKeyName,filterValue,dataSet)
+ if(obj){
+  return getSplittedString(obj[keyName] , delimiter)
+ }
+ return
+}
+
+console.log(question_18('title','director','Pulp Fiction',' ',dataSet));
