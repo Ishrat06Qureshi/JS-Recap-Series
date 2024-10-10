@@ -421,7 +421,7 @@ function checkingAtEnd(str , matchedStr) {
 //Does the title Forrest Gump end with the letter "p"?
 // console.log(checkingAtEnd('Forrest Gump','p'));
 //Does the title The Godfather end with the letter "r"?
-console.log( checkingAtEnd('The Godfather','r'));
+// console.log( checkingAtEnd('The Godfather','r'));
 
 // ++++++ toString method ++++
 let number = 25;
@@ -439,4 +439,63 @@ let updatedBoolean = obj.toString()
 // console.log( updatedBoolean.padEnd(25, '.'));
 
 
+//++++++++++ trim , padStart , padEnds +++++++++++++++++
+//1. Using trim() to Clean Up User Input
+// trim will be escaping the spaces from both of the ends.
+let userInput = '     Ishrat   Qureshi    ';
+// console.log(userInput.trim());
+
+
+let userNumber = '4568765';
+let ext = '021'
+// console.log(userNumber.padStart(10,ext));
+
+//8. Aligning Items in a List
+//// Output:
+// Item      Price
+// Apple     $1.00
+// Banana    $0.50
+// Cherry    $2.00
+
+let items = ['Items','Price'];
+let itemsList = [
+  ['Apple','$1.00'],
+  ['Banana','$0.50'],
+  ['Cherry','$2.00']
+]
+console.log(items[0].padEnd(10,' '), items[1]);
+itemsList.forEach((item , index )=> {
+  console.log((index+1).toString().padEnd(2,''),item[0].padEnd(10 , ' '),item[1]);
+})
+// +++++++++++ PadStart and PadEnds practice Question ++++++++
+//Objective: Create a formatted list of student names and their grades, aligning them for readability.
+
+let students = [
+  { name: "Alice", grade: 90 },
+  { name: "Bob", grade: 85 },
+  { name: "Charliebhbhbhbhbhhbhbhhbbh", grade: 92 },
+];
+
+function alignItems(student) {
+  if(!student.length) {
+    throw new Error('array is empty')
+  }
+let keys = Object.keys(student[0]);
+let firstColum = student.map((element) => element[keys[0]].toString().length);
+let maxLength = Math.max(...firstColum);
+
+console.log(keys[0].padEnd(maxLength +2 ,' '), keys[1]);
+student.forEach((element) => {
+  console.log(element[keys[0]].padEnd(maxLength +2,' '), element[keys[1]]); 
+})
+}
+
+let employees = [
+  { name: "John Doe", salary: "$50,000" },
+  { name: "Jane Smith", salary: "$60,000" },
+  { name: "Emily Johnson", salary: "$55,000" },
+];
+// alignItems(students);
+// alignItems(employees)
+// alignItems(employees)
 
