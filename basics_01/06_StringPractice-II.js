@@ -393,3 +393,50 @@ function InitialBasedFilter( listOfData , initialMatch) {
   return listOfData.filter((element) => element.startsWith(initialMatch))
 }
 // console.log(InitialBasedFilter(fruits, 'p'));
+
+// Verifying if a File Ends with a Specific Extension
+// Requirement --> we have a make a extension checker
+// STEPS
+// fucntion with two paramters ( fileName , extension)
+// checking the parameter Type i.e string
+// we will be using endsWith along ternary operator to either return true or false
+// log the results
+
+function extensionChk(fileName , extension) {
+ if(!checkType(fileName,'string') || !checkType(extension , 'string')){
+  throw new Error('paramter mis-matched Types')
+ }
+ // in-order to get the case insensitivity we need to convert both of the inputs into one case
+ return fileName.toUpperCase().endsWith(extension.toUpperCase())
+}
+// console.log(extensionChk('video.MOV', '.mov'));
+
+function checkingAtEnd(str , matchedStr) {
+  if(!checkType(str,'string') || !checkType(matchedStr , 'string')){
+   throw new Error('paramter mis-matched Types')
+  }
+  // in-order to get the case insensitivity we need to convert both of the inputs into one case
+  return str.toUpperCase().endsWith(matchedStr.toUpperCase())
+ }
+//Does the title Forrest Gump end with the letter "p"?
+// console.log(checkingAtEnd('Forrest Gump','p'));
+//Does the title The Godfather end with the letter "r"?
+console.log( checkingAtEnd('The Godfather','r'));
+
+// ++++++ toString method ++++
+let number = 25;
+let myName = 'ishrat';
+let isMarried = true;
+
+let array = ['sttr' , 'njnj'];
+let obj = {
+  foo:'too'
+}
+let updatedNum = array.toString()
+let updatedBoolean = obj.toString()
+
+// console.log( updatedNum.indexOf(','));
+// console.log( updatedBoolean.padEnd(25, '.'));
+
+
+
