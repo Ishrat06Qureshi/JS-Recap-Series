@@ -354,3 +354,42 @@ function replaceString(searchStr , newStr , str,flag = undefined) {
 // console.log(replaceString('this','that',str));
 //  console.log(replaceString('Fiction','Story','Pulp Fiction', 'ig'));
 
+// ++++++++++++++= endsWith  && startsWith+++++++++++++++
+
+// 1. Checking if a URL starts with https://
+// requirements 
+// make a function which will take the url and determines whether its a safe one or not based on http and https
+// STEPS
+// 1 - function (url).
+// 2 - startwith function will be using to do so.
+// 3 - returning true if safe and false if not.
+
+function urlChecker(url){
+if(!checkType(url ,'string')){
+  throw new Error ('URL is not a string')
+}
+return url.startsWith('https') ? true : false
+}
+let URL = 'http://fictional-space-cod-7ppr9vxwrx7fxgw6.github.dev/'
+// console.log(urlChecker(URL));
+
+// filtering out the fruits which starts with a
+let fruits = ["apple", "banana", "apricot", "blueberry", "avocado" , 'orange', 'okara'];
+
+
+let Afruits = fruits.filter((element) => element.startsWith('b'))
+// STEPS
+// 1- function with two parametrs (dataset and the initialMatch)
+// 2 - typeCheck of the parametrs
+// 3 - we should filter the names based on the results of StartWith method ( filter , StartWith)
+// 4- returing the array
+// 5- log the results
+
+
+function InitialBasedFilter( listOfData , initialMatch) {
+  if(!Array.isArray(listOfData) || !checkType(initialMatch, 'string')) {
+    throw new Error('parameters mismatched!')
+  }
+  return listOfData.filter((element) => element.startsWith(initialMatch))
+}
+// console.log(InitialBasedFilter(fruits, 'p'));
