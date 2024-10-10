@@ -278,7 +278,6 @@ function validateKey (keyName , entity) {
   }
   return false
 }
-
 function findAnObject(keyName , filterValue , dataSet) {
  if(keyName != null && filterValue != null && dataSet != null){
   let obj = dataSet.find((element) => element[keyName] === filterValue);  
@@ -304,4 +303,37 @@ let obj = findAnObject(filterKeyName,filterValue,dataSet)
  return
 }
 
-console.log(question_18('title','director','Pulp Fiction',' ',dataSet));
+// +++++++++++ replace +++++++++++++++
+
+//simple Syntax
+// string.replace(searchValue , newValue);
+
+const paragraph = "I think Ruth's DOG is cuter than your DOG!";
+
+// STEPS
+// 1- replacing the dog with cat
+// 2- we will be replacing in the entire paragraph
+
+// console.log(paragraph.replace(/dog/g,'cat'));
+// In the regular expression we will be providing the searching string along with flags
+// i -- > case insensitivity
+// console.log(paragraph.replace(/dog/ig, 'cat'));
+// console.log(paragraph.replaceAll(/dog/ig,'cat'));
+
+
+let str = "Hello world! this is the basic of programming. programming can be thought as the most difficult one but these days programming is turning into something very handy.";
+// 1 - replace all the occurance of the word programming with 'development'
+// 2 - do it exercise with two methods
+
+// STEPS
+ // 1 -  make a use of regular expression with a flag (g) inside replace method
+ // 2- log the result
+
+ let formattedStr = str.replace(/programming/g , (  match )=> {
+  return match.toUpperCase()
+ });
+//  console.log(formattedStr);
+ 
+  
+// Replace the word "Knight" with "Warrior" in the title The Dark Knight.
+// Replace the word "Fiction" with "Story" in Pulp Fiction.
