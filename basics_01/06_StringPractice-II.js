@@ -321,7 +321,7 @@ const paragraph = "I think Ruth's DOG is cuter than your DOG!";
 // console.log(paragraph.replaceAll(/dog/ig,'cat'));
 
 
-let str = "Hello world! this is the basic of programming. programming can be thought as the most difficult one but these days programming is turning into something very handy.";
+let str = "Hello world! this is the basic of PROGRAMMING. PROGRAMMING can be thought as the most difficult one but these days PROGRAMMING is turning into something very handy.";
 // 1 - replace all the occurance of the word programming with 'development'
 // 2 - do it exercise with two methods
 
@@ -337,3 +337,20 @@ let str = "Hello world! this is the basic of programming. programming can be tho
   
 // Replace the word "Knight" with "Warrior" in the title The Dark Knight.
 // Replace the word "Fiction" with "Story" in Pulp Fiction.
+
+// STEPS
+// 1 - function with two paramters i.e searchString , updatedString
+//2 - returning the string
+// 3 -  log the results 
+
+function replaceString(searchStr , newStr , str,flag = undefined) {
+  if(!checkType(searchStr , 'string') || !checkType(newStr,'string') || !checkType(str,'string'))
+  {
+    throw new Error (' parameters Types mismatched')
+  }
+  let updatedString = flag ? new RegExp(searchStr , flag) : searchStr
+  return str.replace(updatedString,newStr)
+}
+// console.log(replaceString('this','that',str));
+//  console.log(replaceString('Fiction','Story','Pulp Fiction', 'ig'));
+
