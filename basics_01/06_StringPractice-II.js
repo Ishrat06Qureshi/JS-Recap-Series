@@ -463,10 +463,10 @@ let itemsList = [
   ['Banana','$0.50'],
   ['Cherry','$2.00']
 ]
-console.log(items[0].padEnd(10,' '), items[1]);
-itemsList.forEach((item , index )=> {
-  console.log((index+1).toString().padEnd(2,''),item[0].padEnd(10 , ' '),item[1]);
-})
+// console.log(items[0].padEnd(10,' '), items[1]);
+// itemsList.forEach((item , index )=> {
+//   console.log((index+1).toString().padEnd(2,''),item[0].padEnd(10 , ' '),item[1]);
+// })
 // +++++++++++ PadStart and PadEnds practice Question ++++++++
 //Objective: Create a formatted list of student names and their grades, aligning them for readability.
 
@@ -499,3 +499,187 @@ let employees = [
 // alignItems(employees)
 // alignItems(employees)
 
+// ++++++++ Advance aliging Questions +++++
+//Exercise 1: Formatting a Library Book List
+//Objective: Create a formatted list of books in a library, including the title, author, and year published.
+ // STEP
+ // 1 - function with one parameter i.e books list
+ // 2 - we need to extract the keys first
+ // 3 - get the maximum of first and the second key (number of keys -1 )
+ // 4- log the header 
+ // 5 looping over the array and then log the results
+ // 6 -  checking of the parametrs that its an array as well as a full length array
+
+ let library = [
+  { title: "The Great Gatsby", author: "F. Scott Fitzgerald", year: 1925 },
+  { title: "1984", author: "George Orwell", year: 1949 },
+  { title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960 },
+];
+function getColumnLength(bookList , keyIndex , keys){
+ return Math.max(...bookList.map((books)=> books[keys[keyIndex]].toString().length))
+}
+ function getAlignList(bookList) {
+   if(!Array.isArray(bookList) && bookList.length === 0){
+     throw new Error('Array is not correct')
+   }
+   let keys = Object.keys(bookList[0]);
+   
+   let firstColumLength = getColumnLength(bookList , 0 , keys)
+   let secondColumnLength = getColumnLength(bookList,1,keys)
+   //header
+   console.log(keys[0].toString().toUpperCase().padEnd(firstColumLength +2 , ' '),keys[1].toString().toUpperCase().padEnd(secondColumnLength +2 , ' '),keys[2].toUpperCase());
+   bookList.forEach((element) => {
+    
+     console.log(element[keys[0]].toString().padEnd(firstColumLength +2,' '),element[keys[1]].toString().padEnd(secondColumnLength +2 , ' '), element[keys[2]] );
+   })
+ }
+//Exercise 2: Displaying a Fitness Tracker
+// Objective: Create a formatted list of workouts, including the type of exercise, duration, and calories burned.
+let workouts = [
+  { exercise: "Running", duration: 30, calories: 300 },
+  { exercise: "Cycling", duration: 45, calories: 400 },
+  { exercise: "Yoga", duration: 60, calories: 250 },
+];
+//STEPS
+// 1 - function with one parameter i.e workoutChart
+// 2 - validating the input i.e type must be an array (Array.isArray) and must have length (length)
+// 3 - extracting the keys by passing the first member of dataset
+// 4 - dynamic calculation of columns-length i.e looping over the dataset and passing every columns into the defineed function 
+// 5 - dynamic printing of header i.e we will be looping over the keys do some manipulation like toUpperCase or added some space and then turn back the intermediate array into String.
+// 6 - dynamic printing of rows i.e we will be looping over the keys do some manipulation like added some space and then turn back the intermediate array into String.
+
+function getWorkoutTable(workouts) {
+ if(!Array.isArray(workouts) && workouts.length === 0){
+  throw new Error('Workout data is not appropriate')
+ }
+ let keys = Object.keys(workouts[0]);
+ let columsLength = workouts.map((workoutDetails, index) =>  getColumnLength(workouts,index,keys))
+let header = keys.map((key , index) => key.toUpperCase().padEnd(columsLength[index] + 15 , ' ')).join('')
+console.log(header);
+workouts.forEach((works) => {
+  let row = keys.map((key, index) => works[key].toString().padEnd(columsLength[index] + 15 )).join(' ')
+  console.log(row);
+})
+}
+// getWorkoutTable(workouts)
+
+//Exercise 3: Creating a Product Inventory
+// Objective: Format a list of products in an inventory, including the product name, quantity, and price.
+
+// let inventory = [
+//   { name: "Laptop", quantity: 10, price: "$999.99" },
+//   { name: "Smartphone", quantity: 25, price: "$499.99" },
+//   { name: "Headphones", quantity: 50, price: "$199.99" },
+// ];
+// ++++++++++++++++++ Combinations +++++++++++++++++++++++
+// Split the title The Lord of the Rings: The Fellowship of the Ring, then join it using hyphens and convert it to uppercase.
+//STEPS
+// function for only splitting the text
+// function only for joining the array into text
+// conversion to Upper Case
+
+function splitText(text, splitter) {
+  
+ if(!checkType(text,'string') || text.length === 0 || !checkType(splitter,'string')){
+  throw new Error('please provide a valid string')
+ }
+ return text.split(splitter)
+}
+function joinString(arr, joiningStr) {  
+ if( !Array.isArray(arr) || !checkType(joiningStr)){
+  throw new Error('Please provide the valid paramter ')
+ }
+ return arr.join(joiningStr)
+}
+function textUpperCase(text) {
+ if(!checkType(text)){
+  throw new Error('please send a valid text')
+ }
+ return text.toUpperCase( )
+}
+function textLowerCase(text) {
+  if(!checkType(text)){
+    throw new Error('please send a valid text')
+   }
+   return text.toLowerCase( )
+}
+function question_39(text,splitter,joiningStr){
+ let splitted =  splitText(text,splitter);
+ 
+ let joinText = joinString(splitted,joiningStr);
+
+ let lowerCaseText = textLowerCase(joinText);
+
+ return lowerCaseText
+}
+// console.log(question_39('The Lord of the Rings: The Fellowship of the Ring',' ',' '));
+//Replace all spaces in the director's name Christopher Nolan with underscores, and then convert the result to lowercase
+function question_40(text , splitter, joiningStr) {
+let splittedText = splitText(text,splitter);
+let joinedText = joinString(splittedText , joiningStr);
+let lowerCasedText = textLowerCase(joinedText);
+return lowerCasedText
+}
+
+// console.log(question_40('Christopher Nolan',' ', '_'));
+//Replace "Gump" with "Hero" in Forrest Gump and convert the entire title to uppercase.
+
+function replaceStr(searchString, mainString , replaceString ) {
+ if(!checkType(searchString) || !checkType(mainString) || !checkType(replaceString)){
+  throw new Error("paramter Type mismatched");
+ }
+ return mainString.replace(searchString,replaceString);
+}
+function question_22(searchStr , Str , newStr ){
+ let replaceString = replaceStr(searchStr,Str , newStr);
+ let lowerCasedText = textLowerCase(replaceString )
+ return lowerCasedText
+}
+// console.log(question_22('Gump','Forrest Gump','Hero'));
+//Get the length of the title The Godfather, then retrieve the middle character of the title using charAt.
+
+function getStringLength(text) {
+ if(!checkType(text)){
+  throw new Error("Please provide a valid string");
+ }
+ return text.length
+}
+function getChar(position,text ){
+ if(!Number.isInteger(position)){
+  throw new Error("provide a valid position");
+ }
+ if(!checkType(text)){
+  throw new Error("provide a valid position");
+
+ }
+ return text.charAt(position)
+}
+
+function question_24(text){
+  let stringLengthHalf = Math.floor(getStringLength(text)/2);
+  if(stringLengthHalf>= 0){
+    return getChar(stringLengthHalf, text)
+  }
+  else {
+    throw new Error("provide a valid string");
+    
+  }
+}
+// console.log(question_24(' '));
+// Check if the title Interstellar includes the word "star", and if it does, find the starting index of "star"
+function includesText(text, searchingTxt) {
+ if(!checkType(text) || !checkType(searchingTxt)){
+  throw new Error("not a valid text");
+  
+ }
+ return text.toUpperCase().includes(searchingTxt.toUpperCase())
+}
+
+function stringIndex(text, searchingTxt){
+  if(!checkType(text) || !checkType(searchingTxt)){
+    throw new Error("not a valid text");
+   }
+   return includesText(text,searchingTxt) ? text.toUpperCase().indexOf(searchingTxt.toUpperCase()) :-1
+}
+// console.log(stringIndex('INSterstellar','ins'));
+//Extract the first 3 characters of the first word in the title The Godfather using indexOf and substring
