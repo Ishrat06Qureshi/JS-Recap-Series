@@ -101,6 +101,7 @@ function getLength (dataSet , movieTitle , keyName) {
 // What is the last character of the director's name in The Godfather?
 
 function getSpecificCharacter(movieName , position) {
+  
    if(position<= movieName.length &&  Math.sign(position)) {
     return movieName.charAt(position)
    }
@@ -230,7 +231,7 @@ if(str.length === 0) {
 if(initialIndex < 0 || finalIndex > str.length || initialIndex >=finalIndex){
  return ''
 }
- return str.slice(initialIndex,finalIndex);
+ return str.slice(initialIndex,finalIndex + 1);
 
 }
 let strValue = 'Inception'
@@ -683,3 +684,336 @@ function stringIndex(text, searchingTxt){
 }
 // console.log(stringIndex('INSterstellar','ins'));
 //Extract the first 3 characters of the first word in the title The Godfather using indexOf and substring
+//STEPS
+// 1- we will be writing a function by using indexOf along with space
+// 2- wrting a function to get the substring
+function findIndex (text) {
+ if(!checkType(text)){
+  throw new Error('Incorrect paramter Type')
+ }
+ return text.indexOf('')
+}
+function getSubString(text , startStr , EndStr ){
+if(!checkType(text)){
+  throw new Error('Please provide a valid String')
+}
+if(!Number.isInteger(startStr) || !Number.isInteger(EndStr)){
+  throw new Error('Please provide a valid position')
+}
+if(startStr < 0 || EndStr > text.length || startStr>=EndStr){
+  throw new Error('Invalid Range .....')
+}
+return text.substring(startStr,EndStr)
+}
+function question_25( text , EndStr){
+ let initialIndex = findIndex(text);
+ let subString = getSubString(text, initialIndex , EndStr) 
+ return subString
+}
+// console.log(question_25('The Godfather',3));
+
+// 27. replaceAll Method:
+// Replace all instances of the letter "e" with "3" in the title The Dark Knight
+function replaceIns( text , oldStr , newStr) {
+if(!checkType(text) || !checkType(oldStr) || !checkType(newStr)){
+  throw new Error('Invalid values')
+}
+let regex = new RegExp(oldStr , 'ig')
+ return text.replace(regex, '3')
+}
+// console.log(replaceIns('The Dark Knight','T','3'));
+
+// match Method:
+// Use a regular expression to find all occurrences of vowels in the title Fight Club.
+//STEPS
+// 1 - we need to write the expression of the vowels 
+// 2 - It will return an 
+function getMatchStr( text , searchStr) {
+ if(!checkType(text) || !checkType(searchStr)){
+  throw new Error('The inputs are not valid')
+ }
+ let regex = new RegExp(searchStr , 'ig'); 
+let found = text.match(regex);
+console.log(found);
+}
+// getMatchStr('Fight Club','[aeiou]')
+
+// Get the first character of the title Inception, convert it to uppercase, and concatenate it with the rest of the title.
+// STEPS
+// 1 - use CharAt to get the alphabet of specific character 
+// 2 - convert the letter into uppercase
+// 3 - concatenate the letter with rest 
+
+function question_51(text){
+ let firstChar = getSpecificCharacter(text,0);
+ if(firstChar.length){
+  let convertedCase = textUpperCase(firstChar);
+  let concatedText = convertedCase.concat('',convertedCase);
+  return concatedText
+ }
+ else {
+  return null
+ }
+}
+// console.log(question_51('inception'));
+// Find the index of "Redemption" in The Shawshank Redemption, slice the title up to that point, and concatenate it with Fight Club.
+//STEPS
+// 1 - find the index of Redemption using index of
+// 2 - slice the title till redemption
+// 3- concatenate it with Fight Club
+// 4 - create helper functions to get the index , slice and for concatenation
+
+function getIndexOfStr(text , searchStr){
+ if(!checkType(text) || !checkType(searchStr)){
+  throw new Error('Invalid types')
+ }
+ return text.indexOf(searchStr)
+}
+function getSlicedStr(text , startPos , EndPos){
+  if(!checkType(text)){
+    throw new Error('Please provide a valid text')
+  }  
+  if(startPos < 0 || EndPos > text.length){
+    throw new Error('please provide a valid position')
+  }
+  return text.slice(startPos, EndPos);
+}
+function getConcatenate( text , newText , joingText) {
+ if(!checkType(text) || !checkType(newText) || !checkType(joingText)){
+  throw new Error('Not a valid Str')
+ }
+ return text.concat(joingText,newText)
+}
+
+function question_01(text, searchStr , newText ) {
+ let index = getIndexOfStr(text,searchStr);
+ if(index == -1) {
+  throw new Error('String not found')
+ }
+ let slicedText = getSlicedStr(text, 0 , index);
+ let concatenateTxt = getConcatenate(slicedText,newText,' ')
+ return concatenateTxt;
+}
+//// Split The Shawshank Redemption by spaces, slice the first two words, and concatenate them back with spaces.
+//STEPS
+// 1 - helper functions for splitting slicing and concatenating
+// 2 - 
+function question_02(text, delimiter){
+ let splittedTxt = getSplittedString(text,delimiter);
+ let sliced = splittedTxt.slice(0,2);
+ console.log(sliced);
+ 
+ let concatedText = getConcatenate(sliced.toString(),' ', ' ')
+ return concatedText
+}
+// console.log(question_02('The Shawshank Redemption',' '));
+
+// Replace the word "Knight" with "warrior" in The Dark Knight and convert the entire title to lowercase.
+function replaceTxt(text , newText , searchTxt){
+ if(!checkType(text) || !checkType(newText) || !checkType(searchTxt)) {
+  throw new Error('Not a valid Str')
+ }
+ let regex = new RegExp(searchTxt , 'ig');
+  return text.replace(regex,newText)
+}
+function question_03(text , newText , searchStr) {
+ let replacedStr = replaceTxt(text, newText , searchStr);
+ let lowerCasedText = textLowerCase(replacedStr)
+ return lowerCasedText
+}
+// // Find the last occurrence of the letter "e" in Interstellar and return the substring from the start to that index.
+//STEPS
+// use lastIndex to find the last occurance
+// get the text from that occurance till end
+
+function question_04(txt , searchTxt ) {
+ let lastIndex = getLastIndex(txt, searchTxt);
+ console.log(lastIndex);
+ 
+ if(lastIndex == -1){
+   throw new Error('SubString not found')
+ }
+ let subStr = txt.substring(lastIndex)
+  return subStr
+}
+// Split the title The Matrix into words, get the first character of each word, convert them to uppercase, and join them back.
+//STEPS
+// spliiting the word into Two using split
+// using map to get each word and will use charat to get the first letter willbe using slice to get the rest and then apply join 
+function question_05(text){
+ let splittedText = splitText(text.trim(), ' ');
+ let formattedTex = splittedText.map((element) => {
+  
+  return `${element.charAt(0).toUpperCase()}${element.slice(1)}`
+ }).join(' ')
+ return formattedTex
+}
+//Check if The Godfather includes the letter "t". If true, find the index and slice the title from that index onwards
+// STEPS
+function question_06(text , searchStr) {
+ let isPresent = includesText(text , searchStr);
+ if(!isPresent){
+  throw new Error('Str not present')
+ }
+ let index = getIndex(text, searchStr);
+ let slicedTxt = getSlicedStr(text , index , index.length);
+ return slicedTxt
+}
+// console.log(question_06('The Godfather','t'));
+// Split the title Forrest Gump into words, join them with a hyphen (-), and replace all "o"s with "0".
+function question_07(text , joingText , oldStr , newStr) {
+ let splittedTxt = getSplittedString(text , ' ');
+ let joinedText = splittedTxt.join(joingText)
+  let replacedText = replaceTxt(joinedText,newStr , oldStr);
+  return replacedText
+}
+// console.log(question_07('Forrest Gump','-','o','0'));
+// Find the index of the letter "C" in Pulp Fiction, slice from that index to the end, and convert the substring to uppercase.
+function getIndexTwo(text , searchStr) {
+if(!checkType(text) || !checkType(searchStr)){
+  throw new Error('not a valid String')
+}
+return text.toUpperCase().indexOf(searchStr.toUpperCase())
+}
+function getSlicedTwo(text, startPos , endPos) {
+  console.log(startPos,endPos);
+  
+if(!checkType(text)) {
+  return new Error('not a valid string')
+}
+if(!Number.isInteger(startPos) || !Number.isInteger(endPos)){
+  return new Error('not a valid Number')
+}
+if(startPos < 0 || startPos >=endPos || endPos > text.length){
+  return new Error(' Please provide a valid postions')
+}
+return text.slice(startPos,endPos)
+}
+function question_08(text , searchTxt) {
+ let index = getIndexTwo(text , searchTxt); 
+ let slicedStr = getSlicedTwo(text,index, text.length);
+ let formattedStr = textUpperCase(slicedStr);
+ return formattedStr
+}
+// //// Slice the first 4 characters from Fight Club and concatenate them with The Dark Knight.
+function question_09(text , newTxt ){
+ let slicedTxt = getSlicedTwo(text, 0, 4);
+ let concatedText = getConcatenate(slicedTxt,' ', newTxt);
+ return concatedText
+}
+// console.log(question_10('Fight Club','The Dark Knight'));
+// Get the first character of the title Inception, convert it to uppercase, and concatenate it with the rest of the title.
+function question_10(text){
+ let initialChar = text.charAt(0).toUpperCase();
+ let formatted = `${initialChar}${text.slice(1)}`
+ return formatted
+}
+// console.log(question_10('enception'));
+// Split Fight Club into an array of characters, reverse the array, and join it back together as a reversed string.
+function question_11(text ){
+ let spliitedArray = text.split('');
+ let reversedArray = spliitedArray.reverse();
+ let finalTxt = reversedArray.join('')
+ return finalTxt
+}
+// console.log(question_11('Fight Club'));
+// Replace all "a"s in The Godfather with "@", slice the title from index 4 to 10, and concatenate it with Interstellar.
+function replaceTwo(text , oldStr , newStr) {
+ if(!checkType(text) || !checkType(oldStr) || !checkType(newStr)){
+  throw new Error('not a valid String')
+ }
+ let regex = new RegExp(oldStr , 'ig');
+ return text.replace(regex,newStr)
+}
+function question_12(text){
+ let replacedStr = replaceTwo(text,'a','@');
+ let slicedTxt = getSlicedStr(replacedStr,4,10);
+ let concatedText = getConcatenate(slicedTxt,'Interstellar',' ')
+ return concatedText
+}
+// Split Pulp Fiction into words, replace "Fiction" with "Story", and join the parts back together with spaces.
+
+function question_13(text){
+  let replacedTxt  = replaceTwo(text ,'Fiction','Story' )
+  let formatted = getSplittedString(replacedTxt , ' ');
+  return formatted.join(' ')
+  
+}
+// // Find the last index of the letter "e" in The Shawshank Redemption, slice the title until that index, and concatenate it with Inception.
+function getLastIndexTwo(text , searchStr) {
+ if(!checkType(text)|| !checkType(searchStr)) {
+  throw new Error('not a valid Str')
+ }
+ let lastIndex = text.lastIndexOf(searchStr);
+ return lastIndex === -1 ? null : lastIndex
+}
+function question_14(text , searchingTxt){
+ let lastIndex = getLastIndexTwo(text,searchingTxt);
+ console.log(lastIndex);
+ 
+ let slicedTxt = getSlicedStr(text , 0 , lastIndex);
+ let concatedText = getConcatenate(slicedTxt ,'Inception',' ' );
+ return concatedText
+}
+// / Get a substring of The Lord of the Rings from index 4 to 15, replace all spaces with underscores, and concatenate it with The Matrix.
+
+function getSubStringTwo(text , startPos , EndPos) {
+if(!checkType(text)){
+  throw new Error('not a valid string')
+}
+if(!Number.isInteger(startPos) || !Number.isInteger(EndPos)){
+  throw new Error('please provide a valid postion')
+}
+if(startPos < 0 || EndPos > text.length || startPos>=EndPos){
+  throw new Error('please provide a valid Number')
+}
+return text.substring(startPos, EndPos)
+}
+function getReplaceThree(text , newStr , searchingTxt) {
+if(!checkType(text) || !checkType(newStr) || !checkType(searchingTxt)){
+  throw new Error('Not a valid string')
+}
+let regex = new RegExp(searchingTxt , 'ig');
+return text.replace(regex , '_')
+}
+function question_15(text , searchingTxt , concatTxt) {
+ let subString = getSubStringTwo(text , 4 , 15);
+ let replacedStr = getReplaceThree(subString , '_',searchingTxt);
+ let concatedText = getConcatenate(replacedStr ,concatTxt,' ' );
+ return concatedText
+}
+// console.log(question_15('The Lord of the Rings',' ','The Matrix'));
+// Slice the last 3 characters of Fight Club, convert them to uppercase, and concatenate them with the first 3 characters of The Matrix.
+
+function question_16(text , textTwo) {
+  if(!checkType(text)){
+    throw new Error('Not a valid String')
+  }
+ let textLength = text.length;
+ let lastThree = getSubStringTwo(text , textLength- 3 , textLength);
+ let formattedlastThree = textUpperCase(lastThree);
+ let newFirstText = getSubStringTwo(textTwo ,0 , 3)
+ let concatedText = getConcatenate(formattedlastThree ,newFirstText,' ' );
+ return concatedText
+}
+// // Split the director's name Christopher Nolan by spaces, convert each part to uppercase, and join them with a hyphen.
+function question_17(text , delimiter,joiningStr){
+  if(!checkType(text) || !checkType(delimiter) || !checkType(joiningStr)) {
+    throw new Error('Please provide valid parameters')
+  }
+ let spliitedArray = getSplittedString(text , delimiter);
+ let formattedArr = spliitedArray.map((element) => textUpperCase(element)).join(joiningStr)
+ return formattedArr
+}
+// console.log(question_17( 'Christopher Nolan', ' ','_'));
+//// Find the index of the letter "r" in Interstellar, replace all occurrences of "r" with "*", and concatenate the result with The Matrix.
+function question_18(text , searchingTxt , newStr , concatedText) {
+  let index = getIndex(text,searchingTxt);
+  if(index === -1) {
+  throw new Error( `${searchingTxt} is not found in ${text}`)
+  }
+  let replacedTxt = replaceTwo(text,searchingTxt ,newStr);
+  let concatText = getConcatenate(replacedTxt , concatedText , ' ');
+  return concatText
+}
+// // Get the length of Forrest Gump, slice the title from the midpoint to the end, and concatenate it with Inception.
